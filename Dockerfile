@@ -18,9 +18,9 @@ RUN apt-get install --no-install-recommends -y \
     php7.0-curl php7.0-intl php7.0-dom php7.0-mbstring php7.0-zip \
     php7.0-xml php7.0-dev php-pear php7.0-bcmath
 
-ADD config/www.conf /etc/php/7.0/fpm/pool.d
-ADD config/memory-limit.ini /etc/php/7.0/cli/conf.d/memory-limit.ini
-ADD config/memory-limit.ini /etc/php/7.0fpm/conf.d/memory-limit.ini
+COPY config/www.conf /etc/php/7.0/fpm/pool.d
+COPY config/memory-limit.ini /etc/php/7.0/cli/conf.d/memory-limit.ini
+COPY config/memory-limit.ini /etc/php/7.0fpm/conf.d/memory-limit.ini
 
 # Install php additional packages
 
@@ -29,8 +29,8 @@ RUN printf "\n" | pecl channel-update pecl.php.net
 RUN printf "\n" | pecl install xdebug
 RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/7.0/cli/php.ini
 RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/7.0/fpm/php.ini
-ADD config/xdebug.ini > /etc/php/7.0/cli/conf.d
-ADD config/xdebug.ini > /etc/php/7.0/fpm/conf.d
+COPY config/xdebug.ini /etc/php/7.0/cli/conf.d/20-xdebug.ini
+COPY config/xdebug.ini /etc/php/7.0/fpm/conf.d/20-xdebug.ini
 
 # Mongo
 RUN apt-get install --no-install-recommends -y pkg-config libssl-dev
