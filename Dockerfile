@@ -10,7 +10,7 @@ RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN apt-get update
 
 # Install base packages
-RUN apt-get install -y git curl nano wget vim
+RUN apt-get install -y git curl nano wget vim make
 
 # Install php
 RUN apt-get install --no-install-recommends -y \
