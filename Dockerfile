@@ -18,7 +18,18 @@ RUN apt-get install --no-install-recommends -y \
     php7.1-curl php7.1-intl php7.1-dom php7.1-mbstring php7.1-zip \
     php7.1-xml php7.1-dev php-pear php7.1-bcmath
 
+ADD config/www.conf /etc/php/7.1/fpm/pool.d
+
 # Install php additional packages
+
+# Xdebug
+RUN printf "\n" | pecl install xdebug
+RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/7.1/cli/php.ini
+RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/7.1/fpm/php.ini
+
+ADD config/xdebug.ini > /etc/php/7.1/mods-available/xdebug.ini
+RUN ln -s /etc/php/7.1/mods-available/xdebug.ini /etc/php/7.1/cli/conf.d/20-xdebug.ini
+RUN ln -s /etc/php/7.1/mods-available/xdebug.ini /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 
 # Mongo
 RUN apt-get install --no-install-recommends -y pkg-config libssl-dev
