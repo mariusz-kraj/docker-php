@@ -25,6 +25,7 @@ ADD config/memory-limit.ini /etc/php5/fpm/conf.d/memory-limit.ini
 # Install php additional packages
 
 # Xdebug
+RUN printf "\n" | pecl channel-update pecl.php.net
 RUN printf "\n" | pecl install xdebug
 RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/7.1/cli/php.ini
 RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/7.1/fpm/php.ini
