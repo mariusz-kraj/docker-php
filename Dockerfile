@@ -19,8 +19,8 @@ RUN apt-get install --no-install-recommends -y \
     php7.1-xml php7.1-dev php-pear php7.1-bcmath
 
 ADD config/www.conf /etc/php/7.1/fpm/pool.d
-ADD config/memory-limit.ini /etc/php5/cli/conf.d/memory-limit.ini
-ADD config/memory-limit.ini /etc/php5/fpm/conf.d/memory-limit.ini
+ADD config/memory-limit.ini /etc/php/7.1/cli/conf.d/memory-limit.ini
+ADD config/memory-limit.ini /etc/php/7.1/fpm/conf.d/memory-limit.ini
 
 # Install php additional packages
 
