@@ -18,6 +18,10 @@ RUN apt-get install --no-install-recommends -y \
     php5.6-curl php5.6-intl php5.6-dom php5.6-mbstring php5.6-zip \
     php5.6-xml php5.6-dev php-pear php5.6-bcmath
 
+ADD config/www.conf /etc/php/5.6/fpm/pool.d
+ADD config/memory-limit.ini /etc/php/5.6/cli/conf.d/memory-limit.ini
+ADD config/memory-limit.ini /etc/php/5.6/fpm/conf.d/memory-limit.ini
+
 # Install php additional packages
 
 # Mongo
