@@ -14,18 +14,22 @@ RUN apt-get install -y git curl nano wget vim
 
 # Install php
 RUN apt-get install --no-install-recommends -y \
-    php5.6 php5.6-cli php5.6-mysql php5.6-fpm \
-    php5.6-curl php5.6-intl php5.6-dom php5.6-mbstring php5.6-zip \
-    php5.6-xml php5.6-dev php-pear php5.6-bcmath
+    php7.1 php7.1-cli php7.1-mysql php7.1-fpm \
+    php7.1-curl php7.1-intl php7.1-dom php7.1-mbstring php7.1-zip \
+    php7.1-xml php7.1-dev php-pear php7.1-bcmath
+
+ADD config/www.conf /etc/php/7.1/fpm/pool.d
+ADD config/memory-limit.ini /etc/php5/cli/conf.d/memory-limit.ini
+ADD config/memory-limit.ini /etc/php5/fpm/conf.d/memory-limit.ini
 
 # Install php additional packages
 
 # Mongo
 RUN apt-get install --no-install-recommends -y pkg-config libssl-dev
 RUN printf "\n" | pecl install mongodb
-RUN echo "extension=mongodb.so" > /etc/php/5.6/mods-available/mongodb.ini
-RUN ln -s /etc/php/5.6/mods-available/mongodb.ini /etc/php/5.6/cli/conf.d/20-mongodb.ini
-RUN ln -s /etc/php/5.6/mods-available/mongodb.ini /etc/php/5.6/fpm/conf.d/20-mongodb.ini
+RUN echo "extension=mongodb.so" > /etc/php/7.1/mods-available/mongodb.ini
+RUN ln -s /etc/php/7.1/mods-available/mongodb.ini /etc/php/7.1/cli/conf.d/20-mongodb.ini
+RUN ln -s /etc/php/7.1/mods-available/mongodb.ini /etc/php/7.1/fpm/conf.d/20-mongodb.ini
 
 # Symfony installer
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
@@ -41,7 +45,7 @@ RUN mv phing-latest.phar /usr/local/bin/phing
 RUN chmod +x /usr/local/bin/phing
 
 # Running fpm service
-RUN service php5.6-fpm start
+RUN service php7.1-fpm start
 
-CMD ["php-fpm5.6", "-F"]
+CMD ["php-fpm7.1", "-F"]
 EXPOSE 9000
