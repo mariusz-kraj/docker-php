@@ -29,8 +29,8 @@ RUN printf "\n" | pecl channel-update pecl.php.net
 RUN printf "\n" | pecl install xdebug
 RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/5.6/cli/php.ini
 RUN echo 'zend_extension="/usr/local/php/modules/xdebug.so"' >> /etc/php/5.6/fpm/php.ini
-ADD config/xdebug.ini > /etc/php/5.6/cli/conf.d/20-xdebug.ini
-ADD config/xdebug.ini > /etc/php/5.6/fpm/conf.d/20-xdebug.ini
+ADD config/xdebug.ini /etc/php/5.6/cli/conf.d/20-xdebug.ini
+ADD config/xdebug.ini /etc/php/5.6/fpm/conf.d/20-xdebug.ini
 
 # Mongo
 RUN apt-get install --no-install-recommends -y pkg-config libssl-dev
