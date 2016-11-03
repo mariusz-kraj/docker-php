@@ -18,6 +18,12 @@ RUN apt-get install --no-install-recommends -y \
     php7.0-curl php7.0-intl php7.0-dom php7.0-mbstring php7.0-zip \
     php7.0-xml php7.0-dev php-pear php7.0-bcmath
 
+ADD config/www.conf /etc/php/7.0/fpm/pool.d
+ADD config/memory-limit.ini /etc/php/7.0/cli/conf.d/memory-limit.ini
+ADD config/memory-limit.ini /etc/php/7.0/fpm/conf.d/memory-limit.ini
+ADD config/logs.ini /etc/php/7.0/cli/conf.d/logs.ini
+ADD config/logs.ini /etc/php/7.0/fpm/conf.d/logs.ini
+
 # Install php additional packages
 
 # Mongo
