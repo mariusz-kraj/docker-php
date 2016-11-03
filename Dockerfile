@@ -21,6 +21,8 @@ RUN apt-get install --no-install-recommends -y \
 ADD config/www.conf /etc/php/7.1/fpm/pool.d
 ADD config/memory-limit.ini /etc/php/7.1/cli/conf.d/memory-limit.ini
 ADD config/memory-limit.ini /etc/php/7.1/fpm/conf.d/memory-limit.ini
+ADD config/logs.ini /etc/php/7.1/cli/conf.d/logs.ini
+ADD config/logs.ini /etc/php/7.1/fpm/conf.d/logs.ini
 
 # Install php additional packages
 
