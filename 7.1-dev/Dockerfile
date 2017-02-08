@@ -1,6 +1,6 @@
-FROM mariusz-kraj/php:7.1
+FROM mariuszkraj/php:7.1
 
-RUN apt-get install -y php7.1-xdebug
+RUN apt-get update && apt-get install -y php7.1-xdebug
 
 # Enable Remote xdebug
 RUN echo "xdebug.idekey = PHPSTORM" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini \
@@ -35,4 +35,4 @@ RUN wget http://static.phpmd.org/php/latest/phpmd.phar \
 
 RUN wget http://codeception.com/codecept.phar \
     && chmod +x codecept.phar \
-    && mv phpmd.phar /usr/local/bin/codecept
+    && mv codecept.phar /usr/local/bin/codecept
