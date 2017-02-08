@@ -1,4 +1,4 @@
-FROM mariusz-kraj:7.1
+FROM mariusz-kraj/php:7.1
 
 RUN apt-get install -y php7.1-xdebug
 
