@@ -12,9 +12,6 @@ RUN echo "xdebug.idekey = PHPSTORM" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini \
     && echo "xdebug.remote_host = 10.200.10.1" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini \
     && echo "xdebug.max_nesting_level = 700" >> /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 
-# Disable xdebug for cli
-RUN rm -f /etc/php/7.1/cli/conf.d/20-xdebug.ini
-
 RUN service php7.1-fpm reload
 
 RUN wget https://phar.phpunit.de/phpunit.phar \
