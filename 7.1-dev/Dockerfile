@@ -35,11 +35,15 @@ RUN wget http://static.phpmd.org/php/latest/phpmd.phar \
 
 RUN wget https://phar.phpunit.de/phpcpd.phar \
     && chmod +x phpcpd.phar \
-    && mv phpcpd.phar /usr/local/phpcpd
+    && mv phpcpd.phar /usr/local/bin/phpcpd
 
 RUN wget http://static.pdepend.org/php/latest/pdepend.phar \
     && chmod +x pdepend.phar \
-    && mv pdepend.phar /usr/local/pdepend
+    && mv pdepend.phar /usr/local/bin/pdepend
+
+RUN wget https://phar.phpunit.de/phploc.phar \
+    && chmod +x phploc.phar \
+    && mv phploc.phar /usr/local/bin/phploc
 
 RUN wget http://codeception.com/codecept.phar \
     && chmod +x codecept.phar \
