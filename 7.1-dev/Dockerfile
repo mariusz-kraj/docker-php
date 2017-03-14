@@ -33,6 +33,14 @@ RUN wget http://static.phpmd.org/php/latest/phpmd.phar \
     && chmod +x phpmd.phar \
     && mv phpmd.phar /usr/local/bin/phpmd
 
+RUN wget https://phar.phpunit.de/phpcpd.phar \
+    && chmod +x phpcpd.phar \
+    && mv phpcpd.phar /usr/local/phpcpd
+
+RUN wget http://static.pdepend.org/php/latest/pdepend.phar \
+    && chmod +x pdepend.phar \
+    && mv pdepend.phar /usr/local/pdepend
+
 RUN wget http://codeception.com/codecept.phar \
     && chmod +x codecept.phar \
     && mv codecept.phar /usr/local/bin/codecept
