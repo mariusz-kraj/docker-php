@@ -29,7 +29,7 @@ RUN service php7.1-fpm reload
 
 # Mongo
 RUN apt-get install --no-install-recommends -y pkg-config libssl-dev
-RUN printf "\n" | pecl install ansib
+RUN printf "\n" | pecl install mongodb
 RUN echo "extension=mongodb.so" > /etc/php/7.1/mods-available/mongodb.ini
 RUN ln -s /etc/php/7.1/mods-available/mongodb.ini /etc/php/7.1/cli/conf.d/20-mongodb.ini
 RUN ln -s /etc/php/7.1/mods-available/mongodb.ini /etc/php/7.1/fpm/conf.d/20-mongodb.ini
